@@ -1,64 +1,86 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { useCart } from '../contexts/CartContext';
 import CartItem from '../components/CartItem';
 import '../styles/Cart.css';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: 'Cricket ball',
-      price: 3500,
-      quantity: 2
-    },
-    {
-      id: 2,
-      name: 'Cricket Pads',
-      price: 50000,
-      quantity: 2
+  const { isAuthenticated } = useAuth();
+  const { cartItems, updateQuantity, removeFromCart, getTotalPrice, createOrder } = useCart();
+  const [isProcessing, setIsProcessing] = useState(false);
+  const navigate = useNavigate();
+
+
+  const handleIncrease = (productId) => {
+    const item = cartItems.find(item => item.id === productId);
+    if (item) {
+      updateQuantity(productId, item.quantity + 1);
     }
-  ]);
+  };
 
-  const handleIncrease = (id) => {
-    setCartItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      )
+  const handleDecrease = (productId) => {
+    const item = cartItems.find(item => item.id === productId);
+    if (item && item.quantity > 1) {
+      updateQuantity(productId, item.quantity - 1);
+    }
+  };
+
+  const handleRemove = (productId) => {
+    removeFromCart(productId);
+  };
+
+  const handleCheckout = async () => {
+    if (!isAuthenticated) {
+      navigate('/signup');
+      return;
+    }
+
+    if (cartItems.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+
+    try {
+      setIsProcessing(true);
+      const response = await createOrder();
+      alert(`Order placed successfully! Order ID: ${response.order.Order_ID}`);
+      navigate('/');
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Failed to place order. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="cart-page">
+        <div className="cart-container">
+          <h1 className="cart-title">SHOPPING CART</h1>
+          <div className="empty-cart">
+            <h2>Your cart is empty</h2>
+            <p>Add some items to get started!</p>
+            <button 
+              className="cart-checkout-btn" 
+              onClick={() => navigate('/sportgears')}
+            >
+              <span>Browse Products</span>
+            </button>
+          </div>
+          
+        </div>
+      </div>
     );
-  };
-
-  const handleDecrease = (id) => {
-    setCartItems(prevItems =>
-      prevItems.map(item =>
-        item.id === id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-    );
-  };
-
-  const handleRemove = (id) => {
-    setCartItems(prevItems =>
-      prevItems.filter(item => item.id !== id)
-    );
-  };
-
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
-  };
-
-  const handleCheckout = () => {
-    console.log('Proceeding to checkout with items:', cartItems);
-    // Add checkout logic here
-  };
+  }
 
   return (
     <div className="cart-page">
       <div className="cart-container">
         <h1 className="cart-title">SHOPPING CART</h1>
-        
+
         <div className="cart-items-container">
           {cartItems.map(item => (
             <CartItem
@@ -78,10 +100,16 @@ const Cart = () => {
 
         <div className="cart-footer">
           <div className="cart-total">
-            Total : Rs {calculateTotal().toLocaleString()}
+            Total : Rs {getTotalPrice().toLocaleString()}
           </div>
-          <button className="cart-checkout-btn" onClick={handleCheckout}>
-            <span>Proceed to<br/>Checkout</span>
+          <button 
+            className="cart-checkout-btn" 
+            onClick={handleCheckout}
+            disabled={isProcessing}
+          >
+            <span>
+              {isProcessing ? 'Processing...' : 'Proceed to\nCheckout'}
+            </span>
           </button>
         </div>
       </div>

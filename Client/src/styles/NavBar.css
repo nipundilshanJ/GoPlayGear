@@ -5,10 +5,35 @@
 	justify-content: center;
 	padding: 0 4px;
 	transition: transform 0.15s;
+	position: relative;
 }
 .cart-link:hover svg {
 	filter: brightness(0.7);
 	transform: scale(1.15);
+}
+
+.cart-badge {
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	background: #ff4444;
+	color: white;
+	border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: 'Inter', sans-serif;
+	animation: pulse 0.3s ease-in-out;
+}
+
+@keyframes pulse {
+	0% { transform: scale(0.8); }
+	50% { transform: scale(1.2); }
+	100% { transform: scale(1); }
 }
 /* NavBar Styles */
 .navbar {

@@ -9,6 +9,26 @@
   box-sizing: border-box;
 }
 
+.empty-cart {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.empty-cart h2 {
+  color: #121111;
+  font-size: 24px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.empty-cart p {
+  color: #666;
+  font-size: 16px;
+  font-family: 'Inter', sans-serif;
+  margin: 0 0 30px 0;
+}
+
 .cart-container {
   width: 600px;
   min-height: 400px;

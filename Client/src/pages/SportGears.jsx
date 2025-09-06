@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { useCart } from '../contexts/CartContext';
 import Item from '../components/Item';
 import '../styles/SportGears.css';
 
 const SportGears = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [cart, setCart] = useState([]);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [addedProductName, setAddedProductName] = useState('');
+  const { isAuthenticated } = useAuth();
+  const { addToCart, getTotalItems, cartItems } = useCart();
+  const navigate = useNavigate();
 
-  // Product data
-  const products = [
+  const categories = ['All', 'Cricket', 'Football', 'Rugby', 'Athletic'];
+
+  // Static product data - no database needed
+  const allProducts = [
     {
       id: 1,
       name: 'Cricket hard ball',
@@ -73,23 +82,61 @@ const SportGears = () => {
     }
   ];
 
-  const categories = ['All', 'Cricket', 'Football', 'Rugby', 'Athletic'];
+  // Filter products based on selected category
+  const filteredProducts = selectedCategory === 'All' 
+    ? allProducts 
+    : allProducts.filter(product => product.category === selectedCategory);
 
   const handleAddToCart = (product) => {
-    setCart(prevCart => [...prevCart, product]);
-    console.log('Added to cart:', product);
+    if (!isAuthenticated) {
+      navigate('/signup');
+      return;
+    }
+    
+    addToCart(product);
+    
+    // Show success message with product name
+    setAddedProductName(product.name);
+    setShowSuccessMessage(true);
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+      setAddedProductName('');
+    }, 3000);
+    
+    // Don't redirect to cart - let user add multiple items first
   };
-
-  const filteredProducts = selectedCategory === 'All' 
-    ? products 
-    : products.filter(product => product.category === selectedCategory);
 
   return (
     <div className="sportgears-page">
+      {/* Success Message */}
+      {showSuccessMessage && (
+        <div className="success-message">
+          <div className="success-content">
+            <span className="success-icon">✅</span>
+            <span className="success-text">{addedProductName} added to cart successfully!</span>
+            <span className="continue-text">Continue shopping or <a href="/cart" className="go-to-cart-link">view cart</a></span>
+          </div>
+        </div>
+      )}
+      
+      {/* Cart Status */}
+      {getTotalItems() > 0 && (
+        <div className="cart-status">
+          <div className="cart-status-content">
+            <span className="cart-icon">🛒</span>
+            <span className="cart-text">{getTotalItems()} item(s) in cart</span>
+            <a href="/cart" className="view-cart-btn">View Cart</a>
+          </div>
+        </div>
+      )}
+      
+      
+      
+      
       {/* Filters Sidebar */}
       <div className="filters-sidebar">
         <h2 className="filters-title">FILTERS</h2>
-        
+
         <div className="filter-section">
           <h3 className="filter-heading">Categories</h3>
           <div className="category-list">
