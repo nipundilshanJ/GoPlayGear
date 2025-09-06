@@ -1,10 +1,14 @@
 import React from 'react';
 import { useCart } from '../contexts/CartContext';
+import { useAuth } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 import '../styles/NavBar.css';
 
 const NavBar = () => {
 	const { getTotalItems } = useCart();
 	const cartItemCount = getTotalItems();
+	const { isAuthenticated, logout } = useAuth();
+	const navigate = useNavigate();
 
 	return (
 		<nav className="navbar">
@@ -22,8 +26,22 @@ const NavBar = () => {
 						)}
 					</a>
 				</li>
-				<li><a href="/signin" className="navbar-link">Sign in</a></li>
-				<li><a href="/signup" className="navbar-link">Sign Up</a></li>
+				{!isAuthenticated && <li><a href="/signin" className="navbar-link">Sign in</a></li>}
+				{!isAuthenticated && <li><a href="/signup" className="navbar-link">Sign Up</a></li>}
+				{isAuthenticated && (
+					<li>
+						<button
+							className="navbar-link logout-btn"
+							onClick={() => {
+								logout();
+								navigate('/');
+							}}
+							style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', font: 'inherit', padding: 0 }}
+						>
+							Logout
+						</button>
+					</li>
+				)}
 			</ul>
 		</nav>
 	);
