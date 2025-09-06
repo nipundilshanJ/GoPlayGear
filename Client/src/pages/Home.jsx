@@ -1,4 +1,7 @@
 
+
+import leftImg from '../assets/Pictures/left.png';
+import rightImg from '../assets/Pictures/right.jpg';
 import '../styles/Home.css';
 
 const Home = () => {
@@ -9,7 +12,7 @@ const Home = () => {
 				{/* Left Side - Runner Image */}
 				<div className="content-left">
 					<div className="runner-image">
-						<img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=775&h=775&fit=crop&crop=center" alt="Runner silhouette" />
+						   <img src={leftImg} alt="Runner silhouette" />
 					</div>
 					<div className="runner-quote">"Run Faster. Lift Stronger. Play Harder."</div>
 				</div>
@@ -41,7 +44,7 @@ const Home = () => {
 				{/* Right Side - Cricket Gear Image */}
 				<div className="content-right">
 					<div className="cricket-image">
-						<img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=508&h=762&fit=crop&crop=center" alt="Cricket gear" />
+						   <img src={rightImg} alt="Cricket gear" />
 						<div className="cricket-quote">"Fuel Your Passion. Own the Game"</div>
 					</div>
 				</div>

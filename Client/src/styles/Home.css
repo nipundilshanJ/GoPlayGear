@@ -38,9 +38,10 @@
 }
 
 .runner-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background: #fff;
 }
 
 .runner-quote {
@@ -138,9 +139,10 @@
 }
 
 .cricket-image img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		background: #fff;
 }
 
 .cricket-quote {

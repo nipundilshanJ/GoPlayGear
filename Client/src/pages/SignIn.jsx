@@ -36,7 +36,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="signin-page">
+    <div className="signin-page" style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 10, background: '#F3F3F9', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
       <div className="signin-container">
         <h1 className="signin-title">Sign In</h1>
         

@@ -53,7 +53,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="signup-page">
+    <div className="signup-page" style={{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 10, background: '#F3F3F9', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
       <div className="signup-container">
         <h1 className="signup-title">Sign Up</h1>
         

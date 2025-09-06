@@ -3,6 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useCart } from '../contexts/CartContext';
 import Item from '../components/Item';
+import pic1 from '../assets/Pictures/1.png';
+import pic2 from '../assets/Pictures/2.png';
+import pic3 from '../assets/Pictures/3.png';
+import pic4 from '../assets/Pictures/4.png';
+import pic5 from '../assets/Pictures/5.png';
+import pic6 from '../assets/Pictures/6.png';
+import pic7 from '../assets/Pictures/7.png';
+import pic8 from '../assets/Pictures/8.png';
+import pic9 from '../assets/Pictures/9.png';
 import '../styles/SportGears.css';
 
 const SportGears = () => {
@@ -22,63 +31,63 @@ const SportGears = () => {
       name: 'Cricket hard ball',
       price: 3500,
       category: 'Cricket',
-      image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=191&h=126&fit=crop&crop=center'
+      image: pic1
     },
     {
       id: 2,
       name: 'Cricket Bat',
       price: 99000,
       category: 'Cricket',
-      image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=145&h=148&fit=crop&crop=center'
+      image: pic2
     },
     {
       id: 3,
       name: 'Batting Gloves',
       price: 50000,
       category: 'Cricket',
-      image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=158&h=158&fit=crop&crop=center'
+      image: pic3
     },
     {
       id: 4,
       name: 'Batting Pads',
       price: 50000,
       category: 'Cricket',
-      image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=131&h=159&fit=crop&crop=center'
+      image: pic4
     },
     {
       id: 5,
       name: 'Helmet',
       price: 100000,
       category: 'Cricket',
-      image: 'https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=146&h=144&fit=crop&crop=center'
+      image: pic5
     },
     {
       id: 6,
       name: 'Shoes',
       price: 25000,
       category: 'Athletic',
-      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=197&h=162&fit=crop&crop=center'
+      image: pic6
     },
     {
       id: 7,
       name: 'Football',
       price: 15000,
       category: 'Football',
-      image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=191&h=126&fit=crop&crop=center'
+      image: pic7
     },
     {
       id: 8,
       name: 'Rugby Ball',
       price: 12000,
       category: 'Rugby',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=191&h=126&fit=crop&crop=center'
+      image: pic8
     },
     {
       id: 9,
       name: 'Tennis Racket',
       price: 35000,
       category: 'Athletic',
-      image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=191&h=126&fit=crop&crop=center'
+      image: pic9
     }
   ];
 
