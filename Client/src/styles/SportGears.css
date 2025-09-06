@@ -1,0 +1,190 @@
+/* SportGears Page Styles */
+.sportgears-page {
+  width: 100%;
+  min-height: calc(100vh - 116px); /* Account for navbar and bottombar */
+  background: #FAFAFE;
+  display: flex;
+  padding-top: 56px; /* Account for fixed navbar */
+  padding-bottom: 60px; /* Account for fixed bottombar */
+  overflow-y: auto; /* Enable scrolling */
+  overflow-x: hidden; /* Remove horizontal scroll */
+  box-sizing: border-box;
+}
+
+/* Filters Sidebar */
+.filters-sidebar {
+  width: 300px;
+  min-height: calc(100vh - 116px);
+  background: #FAFAFE;
+  border-right: 4px #DBDFF0 solid;
+  padding: 30px 40px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.filters-title {
+  color: #130056;
+  font-size: 32px;
+  font-family: 'Actor', 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 8px;
+  margin: 0 0 30px 0;
+  text-align: center;
+}
+
+.filter-section {
+  margin-bottom: 30px;
+}
+
+.filter-heading {
+  color: #111010;
+  font-size: 28px;
+  font-family: 'ADLaM Display', 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 0 0 15px 0;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-btn {
+  background: none;
+  border: none;
+  color: #1E11D8;
+  font-size: 24px;
+  font-family: 'Actor', 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: left;
+  padding: 8px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.category-btn:hover {
+  background: rgba(30, 17, 216, 0.1);
+  transform: translateX(5px);
+}
+
+.category-btn.active {
+  color: #130056;
+  font-weight: 600;
+  background: rgba(19, 0, 86, 0.1);
+}
+
+/* Products Section */
+.products-section {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .sportgears-page {
+    flex-direction: column;
+  }
+  
+  .filters-sidebar {
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 4px #DBDFF0 solid;
+    padding: 20px;
+  }
+  
+  .filters-title {
+    font-size: 32px;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-heading {
+    font-size: 28px;
+  }
+  
+  .category-btn {
+    font-size: 28px;
+  }
+  
+  .products-section {
+    padding: 20px;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters-sidebar {
+    padding: 15px;
+  }
+  
+  .filters-title {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+  
+  .filter-heading {
+    font-size: 20px;
+  }
+  
+  .category-btn {
+    font-size: 20px;
+  }
+  
+  .products-section {
+    padding: 15px;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters-sidebar {
+    padding: 10px;
+  }
+  
+  .filters-title {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+  
+  .filter-heading {
+    font-size: 18px;
+  }
+  
+  .category-btn {
+    font-size: 18px;
+  }
+  
+  .products-section {
+    padding: 10px;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

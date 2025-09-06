@@ -1,0 +1,134 @@
+/* CartItem Styles */
+.cartitem-root {
+	width: 100%;
+	background: #fff;
+	border-radius: 32px;
+	outline: 2px solid #222;
+	margin: 0 auto 18px auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 0;
+}
+.cartitem-main {
+	width: 95%;
+	min-height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: #222;
+	border-radius: 24px;
+	margin: 16px 0;
+	padding: 0 24px;
+	position: relative;
+}
+.cartitem-divider-vert {
+	width: 79px;
+	height: 0px;
+	position: absolute;
+	left: 381px;
+	top: 1px;
+	transform: rotate(90deg);
+	outline: 1px #fff solid;
+	outline-offset: -0.5px;
+}
+.cartitem-name {
+	color: #fff;
+	font-size: 1.2rem;
+	font-family: Inter, sans-serif;
+	font-weight: 700;
+	letter-spacing: 3px;
+	background: #222;
+	border-radius: 16px;
+	padding: 8px 24px;
+	border: 2px solid #fff;
+	margin-right: 18px;
+}
+.cartitem-price {
+	color: #fff;
+	font-size: 1.1rem;
+	font-family: Amaranth, sans-serif;
+	font-weight: 700;
+	letter-spacing: 2px;
+	background: #222;
+	border-radius: 12px;
+	padding: 8px 18px;
+	border: 2px solid #fff;
+	margin-right: 18px;
+}
+.cartitem-qtybox {
+	display: flex;
+	align-items: center;
+	background: #fff;
+	border-radius: 12px;
+	border: 2px solid #222;
+	padding: 2px 8px;
+	margin-right: 18px;
+}
+.cartitem-divider-horiz {
+	width: 40px;
+	height: 0px;
+	position: absolute;
+	left: 62px;
+	top: 0px;
+	transform: rotate(90deg);
+	outline: 1px #fff solid;
+	outline-offset: -0.5px;
+}
+.cartitem-divider-horiz2 {
+	width: 40px;
+	height: 0px;
+	position: absolute;
+	left: 127px;
+	top: 0px;
+	transform: rotate(90deg);
+	outline: 1px #fff solid;
+	outline-offset: -0.5px;
+}
+.cartitem-qty {
+	color: #222;
+	font-size: 1.1rem;
+	font-family: Amaranth, sans-serif;
+	font-weight: 700;
+	margin: 0 8px;
+}
+.cartitem-btn {
+	width: 32px;
+	height: 32px;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.2rem;
+	font-family: Amaranth, sans-serif;
+	font-weight: 700;
+	background: #222;
+	color: #fff;
+	margin: 0 2px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.cartitem-btn:hover {
+	background: #0a5be1;
+}
+.cartitem-removebox {
+	display: none;
+}
+.cartitem-remove {
+	background: #F80202;
+	color: #fff;
+	font-size: 1rem;
+	font-family: Amaranth, sans-serif;
+	font-weight: 700;
+	letter-spacing: 1.5px;
+	border-radius: 16px;
+	padding: 6px 24px;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	margin-left: 8px;
+	transition: background 0.2s;
+}
+.cartitem-remove:hover {
+	background: #b80000;
+}
+/* Styles for CartItem component */
